@@ -9,4 +9,4 @@ app.get('*', function(req, res) {
   console.log('Request', req.method, req.url);
   proxy.web(req, res, { target: `${req.protocol}://${req.hostname}` });
 });
-const server = app.listen(3000);
+app.listen(process.env.PORT || 3000)
