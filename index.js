@@ -9,4 +9,8 @@ app.get('*', function(req, res) {
   console.log('Request', req.method, req.url);
   proxy.web(req, res, { target: `${req.protocol}://${req.hostname}` });
 });
+app.all('/', (req, res) => {
+    console.log("Just got a request!")
+    res.send('Yo!')
+})
 app.listen(process.env.PORT || 3000)
