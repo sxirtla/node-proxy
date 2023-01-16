@@ -17,8 +17,14 @@ http.createServer(onRequest).listen(3000);
 function onRequest(client_req, client_res) {
 	console.log('url: ', client_req.url);
 
+	let hostname = 'api2.splinterlands.com';
+
+	if (client_req.url.includes('displayproxies')) {
+		hostname = 'api.proxyscrape.com';
+	}
+
 	var options = {
-		hostname: 'api2.splinterlands.com',
+		hostname: hostname,
 		port: 80,
 		path: client_req.url,
 		method: client_req.method,
