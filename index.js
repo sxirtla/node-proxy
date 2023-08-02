@@ -1,15 +1,3 @@
-const express = require('express');
-const httpProxy = require('http-proxy');
-
-// // Create a proxy and listen on port 3000
-// const proxy = httpProxy.createProxyServer();
-// const app = express();
-// app.get('*', function (req, res) {
-// 	console.log('Request', req.method, req.url, req.protocol);
-// 	proxy.web(req, res, { target: `http://${req.hostname}` });
-// });
-// app.listen(3000);
-
 var http = require('http');
 
 http.createServer(onRequest).listen(3000);
@@ -21,7 +9,9 @@ function onRequest(client_req, client_res) {
 
 	if (client_req.url.includes('displayproxies')) {
 		hostname = 'api.proxyscrape.com';
-	}
+	} else if (client_req.url.includes('battle_tx'))
+		hostname = 'battle.splinterlands.com';
+
 
 	var options = {
 		hostname: hostname,
