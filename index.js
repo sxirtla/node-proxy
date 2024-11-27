@@ -7,11 +7,12 @@ function onRequest(client_req, client_res) {
 
 	let hostname = 'api2.splinterlands.com';
 
-	if (client_req.url.includes('displayproxies')) {
+	if (client_req.url.includes('displayproxies'))
 		hostname = 'api.proxyscrape.com';
-	} else if (client_req.url.includes('battle_tx'))
+	else if (client_req.url.includes('battle_tx'))
 		hostname = 'battle.splinterlands.com';
-
+	else if (client_req.url.includes('prices'))
+		hostname = 'prices.splinterlands.com';
 
 	var options = {
 		hostname: hostname,
